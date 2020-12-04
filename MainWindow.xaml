@@ -1,0 +1,98 @@
+﻿<Window x:Class="BidCardCoin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:BidCardCoin"
+        mc:Ignorable="d"
+        Title="BidCardCoin" Icon="Images/loup_mini.png" Height="auto" Width="auto"
+        MinHeight="450" MinWidth="800"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanResize">
+        
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#6A6666" HorizontalAlignment="Stretch" Height="25" Stroke="Black" VerticalAlignment="Top" MinWidth="792"/>
+
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" MinWidth="792" SelectionChanged="TabControl_SelectionChanged">
+
+            <TabItem Header="CRUD" Margin="0,-5,-29,0" HorizontalAlignment="Left" Width="50">
+                <Grid Background="#FFE5E5E5" Margin="-2,-3,-1,-3">
+
+                    <TabControl HorizontalAlignment="Stretch" MinHeight="397" VerticalAlignment="Top" MinWidth="789" Margin="0,4,2,-4" SelectionChanged="TabControl_SelectionChanged">
+                        <TabItem Header="Produits" Margin="-2,-2,-29,0">
+                            <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
+                                <DataGrid Name="GridProduit"  HorizontalAlignment="Left" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+
+                                </DataGrid>
+                                <Button Name="AjoutProduit" Content="Ajouter un produit" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                                <Button Name="ModifProduit" Content="Modifier un produit" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                                <Button Name="SupprProduit" Content="Supprimer un produit" HorizontalAlignment="Left" Margin="330,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="Commissaire" Margin="0,-2,-39,0" HorizontalAlignment="Right" Width="85">
+                            <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
+                                <DataGrid Name="GridCommissaire"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                </DataGrid>
+                                <Button Name="AjoutCommissaire"  Content="Ajouter un commissaire" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12"/>
+                                <Button Name="ModifCommissaire"  Content="Modifier un commissaire" HorizontalAlignment="Left" Margin="190,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12"/>
+                                <Button Name="SupprCommissaire"  Content="Supprimer un commissaire" HorizontalAlignment="Left" Margin="370,8,0,0" VerticalAlignment="Top" Width="180" Height="30" FontSize="12"/>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="Utilisateurs" Margin="0,-2,-49,0" HorizontalAlignment="Right" Width="85">
+                            <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
+                                <DataGrid Name="GridUser"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                </DataGrid>
+                                <Button Name="AjoutUtilisateur" Content="Ajouter un utilisateur" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                                <Button Name="ModifUtilisateur" Content="Modifier un utilisateur" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="12"/>
+                                <Button Name="SupprUtilisateur" Content="Supprimer un utilisateur" HorizontalAlignment="Left" Margin="340,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12"/>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="LieuVente" Margin="0,-2,-59,0" HorizontalAlignment="Right" Width="85">
+                            <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
+                                <DataGrid Name="GridLieuV"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                </DataGrid>
+                                <Button Name="AjoutLieuVente"  Content="Ajouter un lieu" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="12"/>
+                                <Button Name="ModifLieuVente"  Content="Modifier un lieu" HorizontalAlignment="Left" Margin="140,8,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="12"/>
+                                <Button Name="SupprLieuVente"  Content="Supprimer un lieu" HorizontalAlignment="Left" Margin="270,8,0,0" VerticalAlignment="Top" Width="130" Height="30" FontSize="12"/>
+                            </Grid>
+                        </TabItem>
+                        
+                        
+                        <TabItem Header="Enchères" Margin="0,-2,-69,0" HorizontalAlignment="Right" Width="85">
+                            <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
+                                <DataGrid Name="GridEnchere"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                </DataGrid>
+                                <Button Name="AjoutEnchere"  Content="Ajouter une enchère" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                                <Button Name="ModifEnchere"  Content="Modifier une enchère" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                                <Button Name="SupprEnchere"  Content="Supprimer une enchère" HorizontalAlignment="Left" Margin="330,8,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="12"/>
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Vente" Margin="0,-5,-39,0" HorizontalAlignment="Left" Width="50">
+                <Grid Background="#FFE5E5E5" Margin="-2,-2,-2,-2">
+                    <materialDesign:Card Padding="8" Margin="8" Height="50" VerticalAlignment="Top">
+                        <TextBlock Text="My First Material Design App"></TextBlock>
+                    </materialDesign:Card>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Achat" Margin="0,-5,-49,0" HorizontalAlignment="Left" Width="50">
+                <Grid Background="#FFE5E5E5" Margin="-2,-2,-2,-2">
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
