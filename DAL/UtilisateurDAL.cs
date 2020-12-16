@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace BidCardCoin.DAL
 {
-    class UtilisateurDAL
+    public static class UtilisateurDAL
     {
 
         public static ObservableCollection<UtilisateurDAO> selectUtilisateurs()
@@ -58,21 +58,38 @@ namespace BidCardCoin.DAL
         {
             string query = "SELECT * FROM utilisateur WHERE personne_idPersonne = @idPersonne;";
             MySqlCommand cmd = new MySqlCommand(query, DALConnection.OpenConnection());
+
             // Pour éviter l'injection SQL à cause de la concaténation
             cmd.Parameters.AddWithValue("@idPersonne", idPersonne);
-            cmd.ExecuteNonQuery();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            UtilisateurDAO user = new UtilisateurDAO(reader.GetString(0), reader.GetBoolean(1), reader.GetBoolean(2), reader.GetInt32(3), reader.GetString(4));
+
+            MySqlDataReader reader = null;
+            UtilisateurDAO user = null;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    user = new UtilisateurDAO(reader.GetString(0), reader.GetBoolean(1), reader.GetBoolean(2), reader.GetInt32(3), reader.GetString(4));
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Il y a un problème dans la table Utilisateur : {0}", e.StackTrace);
+            }
             reader.Close();
             return user;
+
+
         }
 
 
         public static void updateUtilisateur(UtilisateurDAO u)
         {
-            string query = "UPDATE utilisateur SET verifSolvabilite = @verifSolvabilite ressortissant = @ressortissant" +
-                " modePaiement = @modePaiement personne_idPersonne = @personne_idPersonne WHERE idUtilisateur = @idUtilisateur;";
+            string query = "UPDATE utilisateur SET verifSolvabilite = @verifSolvabilite, ressortissant = @ressortissant," +
+                " modePaiement = @modePaiement, personne_idPersonne = @personne_idPersonne WHERE idUtilisateur = @idUtilisateur;";
             MySqlCommand cmd = new MySqlCommand(query, DALConnection.OpenConnection());
             MySqlDataAdapter sqlDataAdap = new MySqlDataAdapter(cmd);
             // Pour éviter l'injection SQL à cause de la concaténation

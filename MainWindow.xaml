@@ -18,18 +18,51 @@
         </Grid.ColumnDefinitions>
         <Rectangle Fill="#6A6666" HorizontalAlignment="Stretch" Height="25" Stroke="Black" VerticalAlignment="Top" MinWidth="792"/>
 
-        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" MinWidth="792" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" MinWidth="792" >
 
             <TabItem Header="CRUD" Margin="0,-5,-29,0" HorizontalAlignment="Left" Width="50">
                 <Grid Background="#FFE5E5E5" Margin="-2,-3,-1,-3">
 
-                    <TabControl HorizontalAlignment="Stretch" MinHeight="397" VerticalAlignment="Top" MinWidth="789" Margin="0,4,2,-4" SelectionChanged="TabControl_SelectionChanged">
+                    <TabControl HorizontalAlignment="Stretch" MinHeight="397" VerticalAlignment="Top" MinWidth="789" Margin="0,4,2,-4" >
                         <TabItem Header="Produits" Margin="-2,-2,-29,0">
                             <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
-                                <DataGrid Name="GridProduit"  HorizontalAlignment="Left" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
 
+                                <!-- Champs pour ajouter un Produit -->
+                                <Label Content="Nom" HorizontalAlignment="Left"  Margin="10,35,10,10"></Label>
+                                <TextBox x:Name="nomProduitTextBox" Text="{Binding nomProduitProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="13,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Description" HorizontalAlignment="Left"  Margin="110,35,10,10"></Label>
+                                <TextBox x:Name="descriptionProduitTextBox" Text="{Binding descriptionProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="113,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Prix réserve" HorizontalAlignment="Left"  Margin="210,35,10,10"></Label>
+                                <TextBox x:Name="prixReserveProduitTextBox" TextWrapping="Wrap" Text="{Binding prixReserveProperty, Mode=TwoWay}" Width="120" Height="25" HorizontalAlignment="Left" Margin="213,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Prix départ" HorizontalAlignment="Left"  Margin="340,35,10,10"></Label>
+                                <TextBox x:Name="prixDepartProduitTextBox" TextWrapping="Wrap" Text="{Binding prixDepartProperty, Mode=TwoWay}" Width="120" Height="25" HorizontalAlignment="Left" Margin="343,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Prix vente" HorizontalAlignment="Left"  Margin="470,35,10,10"></Label>
+                                <TextBox x:Name="prixVenteProduitTextBox" Text="{Binding prixVenteProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="473,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="EstVendu" HorizontalAlignment="Left"  Margin="570,35,10,10"></Label>
+                                <TextBox x:Name="estVenduProduitTextBox" Text="{Binding estVenduProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="573,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="EnStock" HorizontalAlignment="Left"  Margin="670,35,10,10"></Label>
+                                <TextBox x:Name="enStockProduitTextBox" Text="{Binding enStockProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="673,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="NbInvendu" HorizontalAlignment="Left" Margin="770,35,10,10"></Label>
+                                <TextBox x:Name="nbInvenduProduitTextBox" TextWrapping="Wrap" Text="{Binding nbInvenduProperty, Mode=TwoWay}" Width="90" Height="25" HorizontalAlignment="Left" Margin="773,50,10,10" VerticalAlignment="Top" />
+
+
+                                <DataGrid Name="GridProduit" ItemsSource="{Binding}" AutoGenerateColumns="false" HorizontalAlignment="Left" Height="280" Margin="10,48,10,10" VerticalAlignment="Bottom" MinWidth="764" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn IsReadOnly="True" Header="idProduit" Binding="{Binding idProduitProperty, Mode=OneWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Nom" Binding="{Binding nomProduitProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Description" Binding="{Binding descriptionProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Prix Res." Binding="{Binding prixReserveProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Prix Dep." Binding="{Binding prixDepartProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Prix V." Binding="{Binding prixVenteProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="estVendu" Binding="{Binding estVenduProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="enStock" Binding="{Binding enStockProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="nbInvendu" Binding="{Binding nbInvenduProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="idLot" Binding="{Binding idLotProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="idUtilisateur" Binding="{Binding idUtilisateurProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn IsReadOnly="True" Header="idStockage" Binding="{Binding idStockageProperty, Mode=TwoWay}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
                                 </DataGrid>
-                                <Button Name="AjoutProduit" Content="Ajouter un produit" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
+                                <Button Name="AjoutProduit" Content="Ajouter un produit" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12" Click="AjoutProduit_Click"/>
                                 <Button Name="ModifProduit" Content="Modifier un produit" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
                                 <Button Name="SupprProduit" Content="Supprimer un produit" HorizontalAlignment="Left" Margin="330,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
                             </Grid>
@@ -37,27 +70,105 @@
 
                         <TabItem Header="Commissaire" Margin="0,-2,-39,0" HorizontalAlignment="Right" Width="85">
                             <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
-                                <DataGrid Name="GridCommissaire"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                <!-- Champs pour ajouter un commissaire -->
+                                <Label Content="Nom" HorizontalAlignment="Left"  Margin="10,35,10,10"></Label>
+                                <TextBox x:Name="nomCommissaireTextBox" Text="{Binding nomPersonneProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="13,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Prénom" HorizontalAlignment="Left"  Margin="110,35,10,10"></Label>
+                                <TextBox x:Name="prenomCommissaireTextBox" Text="{Binding prenomPersonneProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="113,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="DateNaissance" HorizontalAlignment="Left"  Margin="210,35,10,10"></Label>
+                                <TextBox x:Name="dateNaissanceCommissaireTextBox" TextWrapping="Wrap" Text="{Binding dateNaissanceProperty, Mode=TwoWay}" Width="120" Height="25" HorizontalAlignment="Left" Margin="213,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Email" HorizontalAlignment="Left"  Margin="340,35,10,10"></Label>
+                                <TextBox x:Name="emailCommissaireTextBox" TextWrapping="Wrap" Text="{Binding emailProperty, Mode=TwoWay}" Width="120" Height="25" HorizontalAlignment="Left" Margin="343,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Password" HorizontalAlignment="Left"  Margin="470,35,10,10"></Label>
+                                <TextBox x:Name="passwordCommissaireTextBox" Text="{Binding passwordProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="473,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Téléphone" HorizontalAlignment="Left"  Margin="570,35,10,10"></Label>
+                                <TextBox x:Name="telephoneCommissaireTextBox" Text="{Binding telephoneProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="573,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="verifIdentite" HorizontalAlignment="Left"  Margin="670,35,10,10"></Label>
+                                <TextBox x:Name="verifIdentiteCommissaireTextBox" Text="{Binding verifIdentiteProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="673,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="formation" HorizontalAlignment="Left" Margin="770,35,10,10"></Label>
+                                <TextBox x:Name="formationCommissaireTextBox" TextWrapping="Wrap" Text="{Binding formationProperty, Mode=TwoWay}" Width="90" Height="25" HorizontalAlignment="Left" Margin="773,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="verifFormation" HorizontalAlignment="Left"  Margin="870,35,10,10"></Label>
+                                <TextBox x:Name="verifFormationCommissaireTextBox" Text="{Binding verifFormationProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="873,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="adresse(s)" HorizontalAlignment="Left"  Margin="970,35,10,10"></Label>
+                                <TextBox x:Name="adresseCommissaireTextBox" Text="{Binding adressePersonneProperty, Mode=OneWay}" IsReadOnly="true" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="973,50,10,10" VerticalAlignment="Top" />
+
+                                <DataGrid Name="GridCommissaire" ItemsSource="{Binding}" AutoGenerateColumns="false" HorizontalAlignment="Stretch" Height="280" Margin="10,10,10,10" VerticalAlignment="Bottom" MinWidth="764" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn IsReadOnly="True" Header="idPersonne" Binding="{Binding idPersonneProperty, Mode=OneWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="idCommissaire" Binding="{Binding idCommissaireProperty, Mode=OneWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="Nom" Binding="{Binding nomPersonneProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="Prénom" Binding="{Binding prenomPersonneProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="DateNaissance" Binding="{Binding dateNaissanceProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="email" Binding="{Binding emailProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="téléphone" Binding="{Binding telephoneProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="formation" Binding="{Binding formationProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="verifFormation" Binding="{Binding verifFormationProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="verifIdentite" Binding="{Binding verifIdentiteProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="adresse(s)" Binding="{Binding adressePersonneProperty, Mode=OneWay}" />
+                                    </DataGrid.Columns>
                                 </DataGrid>
-                                <Button Name="AjoutCommissaire"  Content="Ajouter un commissaire" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12"/>
-                                <Button Name="ModifCommissaire"  Content="Modifier un commissaire" HorizontalAlignment="Left" Margin="190,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12"/>
-                                <Button Name="SupprCommissaire"  Content="Supprimer un commissaire" HorizontalAlignment="Left" Margin="370,8,0,0" VerticalAlignment="Top" Width="180" Height="30" FontSize="12"/>
+                                <!-- Boutons d'actions pour les commissaires -->
+                                <Button Name="AjoutCommissaire"  Content="Ajouter un commissaire" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12" Click="AjoutCommissaire_Click"/>
+                                <Button Name="ModifCommissaire"  Content="Modifier un commissaire" HorizontalAlignment="Left" Margin="190,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12" Click="ModifCommissaire_Click"/>
+                                <Button Name="SupprCommissaire"  Content="Supprimer un commissaire" HorizontalAlignment="Left" Margin="370,8,0,0" VerticalAlignment="Top" Width="180" Height="30" FontSize="12" Click="SupprCommissaire_Click" />
+                                <Button Name="RefreshCommissaire" Content="Refresh" HorizontalAlignment="Right" Margin="0,8,10,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="12" Click="RefreshCommissaire_Click" />
                             </Grid>
                         </TabItem>
 
                         <TabItem Header="Utilisateurs" Margin="0,-2,-49,0" HorizontalAlignment="Right" Width="85">
                             <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
-                                <DataGrid Name="GridUser"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                <!-- Champs pour ajouter un utilisateur -->
+                                <Label Content="Nom" HorizontalAlignment="Left"  Margin="10,35,10,10"></Label>
+                                <TextBox x:Name="nomUserTextBox" Text="{Binding nomPersonneProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="13,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Prénom" HorizontalAlignment="Left"  Margin="110,35,10,10"></Label>
+                                <TextBox x:Name="prenomUserTextBox" Text="{Binding prenomPersonneProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="113,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="DateNaissance" HorizontalAlignment="Left"  Margin="210,35,10,10"></Label>
+                                <TextBox x:Name="dateNaissanceUserTextBox"  Text="{Binding dateNaissanceProperty, Mode=TwoWay}" MinWidth="120" Height="25" HorizontalAlignment="Left" Margin="213,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Email" HorizontalAlignment="Left"  Margin="340,35,10,10"></Label>
+                                <TextBox x:Name="emailUserTextBox" Text="{Binding emailProperty, Mode=TwoWay}" MinWidth="120" Height="25" HorizontalAlignment="Left" Margin="343,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Password" HorizontalAlignment="Left"  Margin="470,35,10,10"></Label>
+                                <TextBox x:Name="passwordUserTextBox" Text="{Binding passwordProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="473,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="Téléphone" HorizontalAlignment="Left"  Margin="570,35,10,10"></Label>
+                                <TextBox x:Name="telephoneUserTextBox" Text="{Binding telephoneProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="573,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="verifIdentite" HorizontalAlignment="Left"  Margin="670,35,10,10"></Label>
+                                <TextBox x:Name="verifIdentiteUserTextBox" Text="{Binding verifIdentiteProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="673,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="modePaiement" HorizontalAlignment="Left"  Margin="770,35,10,10"></Label>
+                                <TextBox x:Name="modePaiementUserTextBox" Text="{Binding modePaiementProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="773,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="verifSolvabilite" HorizontalAlignment="Left"  Margin="870,35,10,10"></Label>
+                                <TextBox x:Name="verifSolvabiliteUserTextBox" Text="{Binding verifSolvabiliteProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="873,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="ressortissant" HorizontalAlignment="Left"  Margin="970,35,10,10"></Label>
+                                <TextBox x:Name="ressortissantUserTextBox" Text="{Binding ressortissantProperty, Mode=TwoWay}" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="973,50,10,10" VerticalAlignment="Top" />
+                                <Label Content="adresse(s)" HorizontalAlignment="Left"  Margin="1070,35,10,10"></Label>
+                                <TextBox x:Name="adresseUserTextBox" Text="{Binding adressePersonneProperty, Mode=OneWay}" IsReadOnly="true" MinWidth="90" Height="25" HorizontalAlignment="Left" Margin="1073,50,10,10" VerticalAlignment="Top" />
+
+                                <!-- Binding de la liste d'utilisateurs -->
+                                <DataGrid Name="GridUser" ItemsSource="{Binding}" AutoGenerateColumns="false" HorizontalAlignment="Stretch" Height="280" Margin="10,10,10,10" VerticalAlignment="Bottom" MinWidth="764" SelectionChanged="GridUser_SelectionChanged" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn IsReadOnly="True" Header="idPersonne" Binding="{Binding idPersonneProperty, Mode=OneWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="idUtilisateur" Binding="{Binding idUtilisateurProperty, Mode=OneWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="Nom" Binding="{Binding nomPersonneProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="Prénom" Binding="{Binding prenomPersonneProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="DateNaissance" Binding="{Binding dateNaissanceProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="email" Binding="{Binding emailProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="téléphone" Binding="{Binding telephoneProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="verifIdentite" Binding="{Binding verifIdentiteProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="modePaiement" Binding="{Binding modePaiementProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="verifSolvabilite" Binding="{Binding verifSolvabiliteProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="ressortissant" Binding="{Binding ressortissantProperty, Mode=TwoWay}" />
+                                        <DataGridTextColumn IsReadOnly="True" Header="adresse(s)" Binding="{Binding adressePersonneProperty, Mode=OneWay}" />
+                                    </DataGrid.Columns>
                                 </DataGrid>
-                                <Button Name="AjoutUtilisateur" Content="Ajouter un utilisateur" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
-                                <Button Name="ModifUtilisateur" Content="Modifier un utilisateur" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="12"/>
-                                <Button Name="SupprUtilisateur" Content="Supprimer un utilisateur" HorizontalAlignment="Left" Margin="340,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12"/>
+                                <!-- Boutons d'actions pour les utilisateurs -->
+                                <Button Name="AjoutUtilisateur" Content="Ajouter un utilisateur" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12" Click="AjoutUtilisateur_Click"/>
+                                <Button Name="ModifUtilisateur" Content="Modifier un utilisateur" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="12" Click="ModifUtilisateur_Click"/>
+                                <Button Name="SupprUtilisateur" Content="Supprimer un utilisateur" HorizontalAlignment="Left" Margin="340,8,0,0" VerticalAlignment="Top" Width="170" Height="30" FontSize="12" Click="SupprUtilisateur_Click"/>
+                                <Button Name="RefreshUtilisateur" Content="Refresh" HorizontalAlignment="Right" Margin="0,8,10,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="12" Click="RefreshUtilisateur_Click"/>
                             </Grid>
                         </TabItem>
 
                         <TabItem Header="LieuVente" Margin="0,-2,-59,0" HorizontalAlignment="Right" Width="85">
                             <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
-                                <DataGrid Name="GridLieuV"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                <DataGrid Name="GridLieuV"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" >
                                 </DataGrid>
                                 <Button Name="AjoutLieuVente"  Content="Ajouter un lieu" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="12"/>
                                 <Button Name="ModifLieuVente"  Content="Modifier un lieu" HorizontalAlignment="Left" Margin="140,8,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="12"/>
@@ -68,7 +179,7 @@
                         
                         <TabItem Header="Enchères" Margin="0,-2,-69,0" HorizontalAlignment="Right" Width="85">
                             <Grid Background="#FFE5E5E5" Margin="-2,-2,-3,0" HorizontalAlignment="Stretch">
-                                <DataGrid Name="GridEnchere"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" SelectionChanged="DataGrid_SelectionChanged">
+                                <DataGrid Name="GridEnchere"  HorizontalAlignment="Stretch" MinHeight="310" Margin="10,48,10,0" VerticalAlignment="Top" MinWidth="764" >
                                 </DataGrid>
                                 <Button Name="AjoutEnchere"  Content="Ajouter une enchère" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>
                                 <Button Name="ModifEnchere"  Content="Modifier une enchère" HorizontalAlignment="Left" Margin="170,8,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="12"/>

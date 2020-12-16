@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -18,12 +19,15 @@ namespace BidCardCoin.ClassVM
         private bool estVendu;
         private bool enStock;
         private int nbInvendu;
-        private LotVM lot;
-        private UtilisateurVM utilisateur;
-        private List<EstimationVM> listEstimations;
-        private List<PhotoVM> listPhotos;
-        
-        //idStockage TODO OBJ
+       // private LotVM lot;
+        private string idLot;
+       // private UtilisateurVM utilisateur;
+        private string idUtilisateur;
+       // private StockageVM stockage;
+        private string idStockage;
+        private ObservableCollection<EstimationVM> listEstimations;
+        private ObservableCollection<PhotoVM> listPhotos;
+
 
         public string idProduitProperty { get { return idProduit; } set { idProduit = value; OnPropertyChanged("idProduitProperty"); } }
         public string nomProduitProperty { get { return nomProduit; } set { nomProduit = value; OnPropertyChanged("nomProduitProperty"); } }
@@ -34,10 +38,14 @@ namespace BidCardCoin.ClassVM
         public bool estVenduProperty { get { return estVendu; } set { estVendu = value; OnPropertyChanged("estVenduProperty"); } }
         public bool enStockProperty { get { return enStock; } set { enStock = value; OnPropertyChanged("enStockProperty"); } }
         public int nbInvenduProperty { get { return nbInvendu; } set { nbInvendu = value; OnPropertyChanged("nbInvenduProperty"); } }
-        public LotVM lotProperty { get { return lot; } set { lot = value; OnPropertyChanged("lotProperty"); } }
-        public UtilisateurVM utilisateurProperty { get { return utilisateur; } set { utilisateur = value; OnPropertyChanged("utilisateurProperty"); } }
-        public List<EstimationVM> listEstimationsProperty { get { return listEstimations; } set { listEstimations = value; OnPropertyChanged("listEstimationsProperty"); } }
-        public List<PhotoVM> listPhotosProperty { get { return listPhotos; } set { listPhotos = value; OnPropertyChanged("listPhotosProperty"); } }
+        //public LotVM lotProperty { get { return lot; } set { lot = value; OnPropertyChanged("lotProperty"); } }
+        public string idLotProperty { get { return idLot; } set { idLot = value; OnPropertyChanged("idLotProperty"); } }
+        //public StockageVM stockageProperty { get { return stockage; } set { stockage = value; OnPropertyChanged("stockageProperty"); } }
+        public string idStockageProperty { get { return idStockage; } set { idStockage = value; OnPropertyChanged("stockageProperty"); } }
+        //public UtilisateurVM utilisateurProperty { get { return utilisateur; } set { utilisateur = value; OnPropertyChanged("utilisateurProperty"); } }
+        public string idUtilisateurProperty { get { return idUtilisateur; } set { idUtilisateur = value; OnPropertyChanged("idUtilisateurProperty"); } }
+        public ObservableCollection<EstimationVM> listEstimationsProperty { get { return listEstimations; } set { listEstimations = value; OnPropertyChanged("listEstimationsProperty"); } }
+        public ObservableCollection<PhotoVM> listPhotosProperty { get { return listPhotos; } set { listPhotos = value; OnPropertyChanged("listPhotosProperty"); } }
 
 
         public ProduitVM()
@@ -51,10 +59,11 @@ namespace BidCardCoin.ClassVM
             estVendu = false;
             enStock = false;
             nbInvendu = 0;
-            lot = new LotVM();
-            utilisateur = new UtilisateurVM();
-            listEstimations = new List<EstimationVM>();
-            listPhotos = new List<PhotoVM>();
+            idLot = "default";
+            idStockage = "default";
+            idUtilisateur = "default";
+            listEstimations = new ObservableCollection<EstimationVM>();
+            listPhotos = new ObservableCollection<PhotoVM>();
 
         }
 
@@ -69,11 +78,32 @@ namespace BidCardCoin.ClassVM
             estVendu = false;
             enStock = false;
             nbInvendu = 0;
-            lot = new LotVM();
-            utilisateur = new UtilisateurVM();
-            listEstimations = new List<EstimationVM>();
-            listPhotos = new List<PhotoVM>();
+            idLot = null;
+            idStockage = null;
+            idUtilisateur = null;
+            listEstimations = new ObservableCollection<EstimationVM>();
+            listPhotos = new ObservableCollection<PhotoVM>();
 
+        }
+
+        public ProduitVM(string idProduit, string nomProduit, string description, double prixReserve, double prixDepart,
+            double prixVente, bool estVendu, bool enStock, int nbInvendu, string idLot, string idStockage, string idUtilisateur,
+            ObservableCollection<EstimationVM> lEstimations, ObservableCollection<PhotoVM> lPhotos)
+        {
+            this.idProduit = idProduit;
+            this.nomProduit = nomProduit;
+            this.description = description;
+            this.prixReserve = prixReserve;
+            this.prixDepart = prixDepart;
+            this.prixVente = prixVente;
+            this.estVendu = estVendu;
+            this.enStock = enStock;
+            this.nbInvendu = nbInvendu;
+            this.idLot = idLot;
+            this.idStockage = idStockage;
+            this.idUtilisateur = idUtilisateur;
+            this.listEstimations = lEstimations;
+            this.listPhotos = lPhotos;
         }
 
 

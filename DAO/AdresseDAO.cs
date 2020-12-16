@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BidCardCoin.DAO
 {
-    class AdresseDAO
+    public class AdresseDAO
     {
         public string idAdresseDAO;
         public int numDAO;

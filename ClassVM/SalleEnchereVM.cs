@@ -27,6 +27,7 @@ namespace BidCardCoin.ClassVM
         }
 
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 

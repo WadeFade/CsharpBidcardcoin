@@ -121,6 +121,28 @@
     <Compile Include="ClassVM\SalleEnchereVM.cs" />
     <Compile Include="ClassVM\StockageVM.cs" />
     <Compile Include="ClassVM\UtilisateurVM.cs" />
+    <Compile Include="commissaireWindow.xaml.cs">
+      <DependentUpon>commissaireWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\EstimationDAL.cs" />
+    <Compile Include="DAL\LotDAL.cs" />
+    <Compile Include="DAL\PhotoDAL.cs" />
+    <Compile Include="DAL\ProduitDAL.cs" />
+    <Compile Include="DAO\EstimationDAO.cs" />
+    <Compile Include="DAO\LotDAO.cs" />
+    <Compile Include="DAO\PhotoDAO.cs" />
+    <Compile Include="DAO\ProduitDAO.cs" />
+    <Compile Include="ORM\EstimationORM.cs" />
+    <Compile Include="ORM\LotORM.cs" />
+    <Compile Include="ORM\PhotoORM.cs" />
+    <Compile Include="ORM\ProduitORM.cs" />
+    <Compile Include="userWindow.xaml.cs">
+      <DependentUpon>userWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="commissaireWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,18 +153,31 @@
     </Compile>
     <Compile Include="ClassVM\VenteVM.cs" />
     <Compile Include="DALConnection.cs" />
+    <Compile Include="DAL\AdresseDAL.cs" />
     <Compile Include="DAL\CommissaireDAL.cs" />
+    <Compile Include="DAL\PersonneAdresseDAL.cs" />
     <Compile Include="DAL\PersonneDAL.cs" />
     <Compile Include="DAL\UtilisateurDAL.cs" />
+    <Compile Include="DAO\AdresseDAO.cs" />
+    <Compile Include="DAO\CommissaireDAO.cs" />
+    <Compile Include="DAO\PersonneAdresseDAO.cs" />
     <Compile Include="DAO\PersonneDAO.cs" />
+    <Compile Include="DAO\UtilisateurDAO.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="userWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassVM\PersonneVM.cs" />
+    <Compile Include="ORM\AdresseORM.cs" />
+    <Compile Include="ORM\CommissaireORM.cs" />
     <Compile Include="ORM\PersonneORM.cs" />
+    <Compile Include="ORM\UtilisateurORM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

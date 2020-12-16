@@ -17,6 +17,7 @@ namespace BidCardCoin
         protected string prenomPersonne;
         protected DateTime dateNaissance;
         protected string email;
+        protected string password;
         protected string telephone;
         protected bool verifIdentite;
         protected ObservableCollection<AdresseVM> adressePersonne;
@@ -27,6 +28,7 @@ namespace BidCardCoin
         public string prenomPersonneProperty { get { return prenomPersonne; } set { prenomPersonne = value; OnPropertyChanged("prenomPersonneProperty"); } }
         public DateTime dateNaissanceProperty { get { return dateNaissance; } set { dateNaissance = value; OnPropertyChanged("dateNaissanceProperty"); } }
         public string emailProperty { get { return email; } set { email = value; OnPropertyChanged("emailProperty"); } }
+        public string passwordProperty { get { return password; } set { password = value; OnPropertyChanged("passwordProperty"); } }
         public string telephoneProperty { get { return telephone; } set { telephone = value; OnPropertyChanged("telephoneProperty"); } }
         public bool verifIdentiteProperty { get { return verifIdentite; } set { verifIdentite = value; OnPropertyChanged("verifIdentiteProperty"); } }
         public ObservableCollection<AdresseVM> adressePersonneProperty { get { return adressePersonne; } set { adressePersonne = value; OnPropertyChanged("adressePersonneProperty"); } }

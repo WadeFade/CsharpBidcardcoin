@@ -24,12 +24,13 @@ namespace BidCardCoin
         {
             idPersonne = Guid.NewGuid().ToString();
             idCommissaire = Guid.NewGuid().ToString();
-            nomPersonne = "NomCommissaire";
-            prenomPersonne = "PrenomCommissaire";
+            nomPersonne = "Nom";
+            prenomPersonne = "Prenom";
             dateNaissance = new DateTime();
-            email = "email@test.com";
-            telephone = "00 00 00 00 00";
-            formation = "Formation par defaut";
+            email = "@";
+            password = "pass";
+            telephone = "0000000000";
+            formation = "Formation";
             verifIdentite = false;
             verifFormation = false;
             adressePersonne = new ObservableCollection<AdresseVM>();
@@ -37,7 +38,7 @@ namespace BidCardCoin
 
         public CommissaireVM(string idPersonne, string idCommissaire,
             string nomPersonne, string prenomPersonne, DateTime dateNaissance,
-            string email, string telephone, string formation, bool verifIdentite,
+            string email, string password, string telephone, string formation, bool verifIdentite,
             bool verifFormation, ObservableCollection<AdresseVM> adressePersonne)
         {
             this.idPersonne = idPersonne;
@@ -46,6 +47,7 @@ namespace BidCardCoin
             this.prenomPersonne = prenomPersonne;
             this.dateNaissance = dateNaissance;
             this.email = email;
+            this.password = password;
             this.telephone = telephone;
             this.formation = formation;
             this.verifIdentite = verifIdentite;

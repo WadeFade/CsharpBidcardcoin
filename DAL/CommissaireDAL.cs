@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace BidCardCoin.DAL
 {
-    class CommissaireDAL
+    public static class CommissaireDAL
     {
         public static ObservableCollection<CommissaireDAO> selectCommissaires()
         {
@@ -52,10 +52,40 @@ namespace BidCardCoin.DAL
             return commissaire;
         }
 
+        public static CommissaireDAO getCommissaireByIdPersonne(string idPersonne)
+        {
+            string query = "SELECT * FROM commissairepriseur WHERE personne_idPersonne = @idPersonne;";
+            MySqlCommand cmd = new MySqlCommand(query, DALConnection.OpenConnection());
+
+            // Pour éviter l'injection SQL à cause de la concaténation
+            cmd.Parameters.AddWithValue("@idPersonne", idPersonne);
+
+            MySqlDataReader reader = null;
+            CommissaireDAO commissaire = null;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    commissaire = new CommissaireDAO(reader.GetString(0), reader.GetString(1), reader.GetBoolean(2), reader.GetString(3));
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Il y a un problème dans la table Commissaire : {0}", e.StackTrace);
+            }
+            reader.Close();
+            return commissaire;
+
+
+        }
 
         public static void updateCommissaire(CommissaireDAO c)
         {
-            string query = "UPDATE commissairepriseur SET formation = @formation verifFormation = @verifFormation" +
+            string query = "UPDATE commissairepriseur SET formation = @formation, verifFormation = @verifFormation," +
                 " personne_idPersonne = @personne_idPersonne WHERE idCommissairePriseur = @idCommissairePriseur;";
             MySqlCommand cmd = new MySqlCommand(query, DALConnection.OpenConnection());
             MySqlDataAdapter sqlDataAdap = new MySqlDataAdapter(cmd);

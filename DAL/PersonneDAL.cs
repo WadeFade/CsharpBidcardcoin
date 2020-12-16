@@ -10,11 +10,9 @@ using System.Windows;
 
 namespace BidCardCoin.DAL
 {
-    class PersonneDAL
+    public static class PersonneDAL
     {
-        public PersonneDAL() { }
-
-
+        
         // todo faire et mettre à jour les méthodes pour Personne, Utilisateur et Commissaire !
         // Faire attention quand je delete une PERSONNE d'aussi DELETE l'UTILISATEUR ou le COMMISSAIRE correspondant
         // idem pour UPDATE
@@ -61,9 +59,9 @@ namespace BidCardCoin.DAL
        
         public static void updatePersonne(PersonneDAO p)
         {
-            string query = "UPDATE personne SET nomPersonne = @nomPersonne prenomPersonne = @prenomPersonne" +
-                " dateNaissance = @dateNaissance telephone = @telephone email = @email password = @password" +
-                " verifIdentite = @verifIdentite WHERE idPersonne = @idPersonne;";
+            string query = "UPDATE personne SET `nomPersonne` = @nomPersonne, `prenomPersonne` = @prenomPersonne," +
+                " `dateNaissance` = @dateNaissance, `telephone` = @telephone, `email` = @email, `password` = @password," +
+                " `verifIdentite` = @verifIdentite WHERE idPersonne = @idPersonne;";
             MySqlCommand cmd = new MySqlCommand(query, DALConnection.OpenConnection());
             MySqlDataAdapter sqlDataAdap = new MySqlDataAdapter(cmd);
             // Pour éviter l'injection SQL à cause de la concaténation

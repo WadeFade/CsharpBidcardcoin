@@ -10,11 +10,9 @@ using System.Windows;
 
 namespace BidCardCoin.DAL
 {
-    class AdresseDAL
+    public static class AdresseDAL
     {
-        public AdresseDAL() { }
-
-
+        
         public static ObservableCollection<AdresseDAO> selectAdresses()
         {
             ObservableCollection<AdresseDAO> lAdresseDAOs = new ObservableCollection<AdresseDAO>();

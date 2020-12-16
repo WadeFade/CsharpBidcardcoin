@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BidCardCoin.DAO
 {
-    class PersonneAdresseDAO
+    public class PersonneAdresseDAO
     {
         public string idPersonneDAO;
         public string idAdresseDAO;
@@ -33,7 +33,7 @@ namespace BidCardCoin.DAO
             return lPersonneAdresseDAOs;
         }
 
-        // Fonction pas nécéssaire normalement, on ne vuet pas modifier l'asso mais la suppr.
+        // Fonction pas nécéssaire normalement, on ne veut pas modifier l'asso mais la suppr.
         public static void updatePersonneAdresse(PersonneAdresseDAO pa)
         {
             DAL.PersonneAdresseDAL.updatePersonneAdresse(pa);
